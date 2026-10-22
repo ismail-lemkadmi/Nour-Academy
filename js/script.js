@@ -1,11 +1,27 @@
 const coursesContainer = document.querySelector("#courses-container");
 const resultsCount = document.querySelector("#results-count");
 
+const levelFilter = document.querySelector("#level-filter");
+const subjectFilter = document.querySelector("#subject-filter");
+const resetFiltersButton = document.querySelector("#reset-filters");
+
 function renderCourses(courseList) {
+  coursesContainer.innerHTML = "";
 
-    coursesContainer.innerHTML = "";
+  const count = courseList.length;
 
-  resultsCount.textContent = `${courseList.length} cours affichés`;
+  resultsCount.textContent =
+    count === 1 ? "1 cours affiché" : `${count} cours affichés`;
+
+  if (count === 0) {
+    const message = document.createElement("p");
+
+    message.classList.add("empty-state");
+    message.textContent = "Aucun cours ne correspond à vos filtres.";
+
+    coursesContainer.appendChild(message);
+    return;
+  }
 
   courseList.forEach(function (course) {
     const isFull = course.places === 0;
@@ -49,4 +65,31 @@ function renderCourses(courseList) {
   });
 }
 
-renderCourses(courses);
+function filterCourses() {
+  const selectedLevel = levelFilter.value;
+  const selectedSubject = subjectFilter.value;
+
+  const filteredCourses = courses.filter(function (course) {
+    const matchesLevel =
+      selectedLevel === "" || course.level === selectedLevel;
+
+    const matchesSubject =
+      selectedSubject === "" || course.subject === selectedSubject;
+
+    return matchesLevel && matchesSubject;
+  });
+
+  renderCourses(filteredCourses);
+}
+
+levelFilter.addEventListener("change", filterCourses);
+subjectFilter.addEventListener("change", filterCourses);
+
+resetFiltersButton.addEventListener("click", function () {
+  levelFilter.value = "";
+  subjectFilter.value = "";
+
+  filterCourses();
+});
+
+filterCourses();
