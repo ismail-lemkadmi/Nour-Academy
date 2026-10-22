@@ -2,11 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Nour Academy — Nos cours</title>
 
@@ -19,12 +15,11 @@
 <body>
   <header class="header">
     <div class="container">
-      <a href="#accueil" class="logo">
-        Nour Academy
-      </a>
+      <a href="#accueil" class="logo">Nour Academy</a>
 
       <nav aria-label="Navigation principale">
         <a href="#catalogue">Nos cours</a>
+        <a href="#selection">Ma sélection</a>
       </nav>
     </div>
   </header>
@@ -84,7 +79,34 @@
 
         <p id="results-count" role="status"></p>
 
-        <div id="courses-container" class="courses-grid">
+        <div id="courses-container" class="courses-grid"></div>
+      </div>
+    </section>
+
+    <section
+      id="selection"
+      class="selection"
+      aria-labelledby="selection-title"
+    >
+      <div class="container">
+        <h2 id="selection-title">Ma sélection</h2>
+
+        <p id="selection-count" role="status">
+          0 cours sélectionnés
+        </p>
+
+        <div class="selection-box">
+          <p id="selection-empty">
+            Aucun cours sélectionné. Ajoutez un cours pour commencer.
+          </p>
+
+          <ul id="selected-courses" class="selected-courses"></ul>
+
+          <p class="selection-total">
+            Total mensuel :
+            <strong id="selection-total">0 MAD</strong>
+            / mois
+          </p>
         </div>
       </div>
     </section>
