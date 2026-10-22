@@ -304,3 +304,131 @@ button:focus-visible {
     align-items: end;
   }
 }
+.selection {
+  padding: 0 0 64px;
+}
+
+#selection-count {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+.selection-box {
+  padding: 20px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+#selection-empty {
+  margin: 0;
+  color: var(--muted);
+}
+
+.selected-courses {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.selected-course {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 0;
+}
+
+.selected-course:first-child {
+  padding-top: 0;
+}
+
+.selected-course + .selected-course {
+  border-top: 1px solid var(--border);
+}
+
+.selected-course-info {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.selected-course-info h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.selected-course-info p {
+  margin: 0 0 4px;
+  color: var(--muted);
+}
+
+.selected-course-info .selected-course-price {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.remove-course {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 20px;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  background-color: var(--surface);
+  color: var(--primary);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.remove-course:hover {
+  background-color: var(--soft);
+}
+
+.selection-total {
+  margin: 20px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  font-size: 18px;
+}
+
+.selection-total strong {
+  font-size: 22px;
+}
+
+.course-card.is-selected {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.is-selected .course-button {
+  background-color: var(--soft);
+  color: var(--primary);
+}
+
+.is-selected .course-button:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+#selection-title:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 6px;
+}
+
+@media (min-width: 640px) {
+  .selected-course {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .remove-course {
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .selection-box {
+    padding: 24px;
+  }
+}
