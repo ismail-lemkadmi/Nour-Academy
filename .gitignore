@@ -1,13 +1,10 @@
-# Dependencies
-node_modules/
-
-# Environment variables
-.env
-.env.*
-
-# System files
+# Fichiers du système
 .DS_Store
 Thumbs.db
 
-# Editor settings
-.vscode/
+# Fichiers temporaires
+*.log
+
+# Configuration locale sensible
+.env
+.env.*
