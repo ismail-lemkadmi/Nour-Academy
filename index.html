@@ -2,11 +2,16 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Nour Academy </title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Nour Academy — Nos cours</title>
 
   <link rel="stylesheet" href="src/style.css">
+
   <script src="js/courses.js" defer></script>
   <script src="js/script.js" defer></script>
 </head>
@@ -14,7 +19,9 @@
 <body>
   <header class="header">
     <div class="container">
-      <a href="#accueil" class="logo">Nour Academy</a>
+      <a href="#accueil" class="logo">
+        Nour Academy
+      </a>
 
       <nav aria-label="Navigation principale">
         <a href="#catalogue">Nos cours</a>
@@ -27,7 +34,7 @@
       <div class="container">
         <p>Soutien scolaire & langues</p>
 
-        <h1>Le bon cours. Un avenir qui s'éclaire.</h1>
+        <h1>Le bon cours. Un avenir qui s’éclaire.</h1>
 
         <p>
           Du primaire au Bac, trouvez le cours adapté à votre enfant.
@@ -39,10 +46,45 @@
       <div class="container">
         <h2>Nos cours</h2>
 
+        <div id="course-filters" class="filters">
+          <div class="filter-group">
+            <label for="level-filter">Niveau</label>
+
+            <select id="level-filter" name="level">
+              <option value="">Tous les niveaux</option>
+              <option value="Primaire">Primaire</option>
+              <option value="Collège">Collège</option>
+              <option value="1re Bac">1re Bac</option>
+              <option value="2e Bac">2e Bac</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="subject-filter">Matière</label>
+
+            <select id="subject-filter" name="subject">
+              <option value="">Toutes les matières</option>
+              <option value="Mathématiques">Mathématiques</option>
+              <option value="Physique-chimie">Physique-chimie</option>
+              <option value="Français">Français</option>
+              <option value="Anglais">Anglais</option>
+              <option value="SVT">SVT</option>
+              <option value="Arabe">Arabe</option>
+            </select>
+          </div>
+
+          <button
+            type="button"
+            id="reset-filters"
+            class="filter-reset"
+          >
+            Réinitialiser
+          </button>
+        </div>
+
         <p id="results-count" role="status"></p>
 
         <div id="courses-container" class="courses-grid">
-          <!-- Les cartes seront générées en JavaScript. -->
         </div>
       </div>
     </section>
@@ -50,7 +92,9 @@
 
   <footer class="footer">
     <div class="container">
-      <p>Nour Academy — Nador Centre · Hay Al Matar · Selouane</p>
+      <p>
+        Nour Academy — Nador Centre · Hay Al Matar · Selouane
+      </p>
     </div>
   </footer>
 </body>
