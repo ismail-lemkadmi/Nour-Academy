@@ -110,6 +110,233 @@
         </div>
       </div>
     </section>
+    <section
+  id="inscription"
+  class="registration"
+  aria-labelledby="registration-title"
+>
+  <div class="container">
+    <h2 id="registration-title">Demande d’inscription</h2>
+
+    <p id="form-intro" class="form-intro">
+      Tous les champs sont obligatoires. Pour cette démonstration,
+      utilisez uniquement des informations fictives.
+    </p>
+
+    <form
+      id="registration-form"
+      class="registration-form"
+      aria-describedby="form-intro"
+      novalidate
+    >
+      <fieldset class="form-section">
+        <legend>Informations du parent</legend>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="parent-name">Nom complet du parent</label>
+            <input
+              type="text"
+              id="parent-name"
+              name="parentName"
+              class="form-control"
+              autocomplete="section-parent name"
+              minlength="2"
+              maxlength="80"
+              aria-describedby="parent-name-status"
+              required
+            >
+            <p
+              id="parent-name-status"
+              class="field-status"
+              aria-live="polite"
+              aria-atomic="true"
+            ></p>
+          </div>
+
+          <div class="form-field">
+            <label for="parent-email">Adresse e-mail</label>
+            <input
+              type="email"
+              id="parent-email"
+              name="parentEmail"
+              class="form-control"
+              autocomplete="section-parent email"
+              placeholder="parent@example.com"
+              maxlength="254"
+              aria-describedby="parent-email-status"
+              required
+            >
+            <p
+              id="parent-email-status"
+              class="field-status"
+              aria-live="polite"
+              aria-atomic="true"
+            ></p>
+          </div>
+
+          <div class="form-field">
+            <label for="parent-phone">Téléphone marocain</label>
+            <input
+              type="tel"
+              id="parent-phone"
+              name="parentPhone"
+              class="form-control"
+              autocomplete="section-parent tel"
+              maxlength="20"
+              aria-describedby="phone-hint parent-phone-status"
+              required
+            >
+            <p id="phone-hint" class="field-hint">
+              06 ou 07 suivi de 8 chiffres, ou le format international
+              +2126 ou +2127 suivi de 8 chiffres.
+            </p>
+            <p
+              id="parent-phone-status"
+              class="field-status"
+              aria-live="polite"
+              aria-atomic="true"
+            ></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend>Informations de l’élève</legend>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="student-name">Prénom de l’élève</label>
+            <input
+              type="text"
+              id="student-name"
+              name="studentName"
+              class="form-control"
+              autocomplete="section-student given-name"
+              minlength="2"
+              maxlength="80"
+              aria-describedby="student-name-status"
+              required
+            >
+            <p
+              id="student-name-status"
+              class="field-status"
+              aria-live="polite"
+              aria-atomic="true"
+            ></p>
+          </div>
+
+          <div class="form-field">
+            <label for="student-level">Niveau scolaire</label>
+            <select
+              id="student-level"
+              name="studentLevel"
+              class="form-control"
+              aria-describedby="student-level-status"
+              required
+            >
+              <option value="">Choisir un niveau</option>
+              <option value="Primaire">Primaire</option>
+              <option value="Collège">Collège</option>
+              <option value="1re Bac">1re Bac</option>
+              <option value="2e Bac">2e Bac</option>
+            </select>
+            <p
+              id="student-level-status"
+              class="field-status"
+              aria-live="polite"
+              aria-atomic="true"
+            ></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend>Mot de passe</legend>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="password">Mot de passe</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              autocomplete="new-password"
+              minlength="8"
+              maxlength="128"
+              aria-describedby="password-hint password-status"
+              required
+            >
+            <p id="password-hint" class="field-hint">
+              Au moins 8 caractères, avec une majuscule, un chiffre
+              et un caractère spécial.
+            </p>
+            <p
+              id="password-status"
+              class="field-status"
+              aria-live="polite"
+              aria-atomic="true"
+            ></p>
+          </div>
+
+          <div class="form-field">
+            <label for="confirm-password">Confirmer le mot de passe</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirmPassword"
+              class="form-control"
+              autocomplete="new-password"
+              minlength="8"
+              maxlength="128"
+              aria-describedby="confirm-password-status"
+              required
+            >
+            <p
+              id="confirm-password-status"
+              class="field-status"
+              aria-live="polite"
+              aria-atomic="true"
+            ></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-field consent-field">
+        <div class="consent-row">
+          <input
+            type="checkbox"
+            id="consent"
+            name="consent"
+            aria-describedby="consent-status"
+            required
+          >
+          <label for="consent">
+            J’accepte l’utilisation des informations saisies pour cette
+            demande d’inscription.
+          </label>
+        </div>
+
+        <p
+          id="consent-status"
+          class="field-status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+      </div>
+
+      <button
+        type="submit"
+        id="submit-registration"
+        class="submit-button"
+        disabled
+      >
+        Valider mon inscription
+      </button>
+    </form>
+  </div>
+</section>
   </main>
 
   <footer class="footer">
