@@ -432,3 +432,181 @@ button:focus-visible {
     padding: 24px;
   }
 }
+:root {
+  --error: #b42318;
+  --success: #176b3a;
+}
+
+.registration {
+  padding: 0 0 64px;
+}
+
+.form-intro {
+  max-width: 720px;
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+.registration-form {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background-color: var(--surface);
+}
+
+.form-section {
+  min-width: 0;
+  margin: 0 0 28px;
+  padding: 0;
+  border: 0;
+}
+
+.form-section legend {
+  margin-bottom: 16px;
+  padding: 0;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.form-field label {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.form-control {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.form-control::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.form-control.is-invalid {
+  border-color: var(--error);
+}
+
+.form-control.is-valid {
+  border-color: var(--success);
+}
+
+.field-hint,
+.field-status {
+  margin: 0;
+  font-size: 14px;
+  overflow-wrap: break-word;
+}
+
+.field-hint {
+  color: var(--muted);
+}
+
+.field-status {
+  min-height: 23px;
+}
+
+.field-status.is-error {
+  color: var(--error);
+}
+
+.field-status.is-success {
+  color: var(--success);
+}
+
+.consent-field {
+  margin-bottom: 24px;
+}
+
+.consent-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.consent-row input {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin: 12px 0;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.consent-row label {
+  flex: 1;
+  min-height: 48px;
+  padding: 10px 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.consent-row input.is-invalid {
+  outline: 2px solid var(--error);
+  outline-offset: 3px;
+}
+
+.submit-button {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  background-color: var(--primary);
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: var(--primary-dark);
+}
+
+.submit-button:disabled {
+  border-color: var(--border);
+  background-color: var(--soft);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+.form-control:focus-visible,
+.consent-row input:focus-visible,
+.submit-button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+@media (min-width: 640px) {
+  .registration-form {
+    padding: 28px;
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
