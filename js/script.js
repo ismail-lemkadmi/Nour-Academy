@@ -9,6 +9,7 @@ const selectionEmpty = document.querySelector("#selection-empty");
 const selectionCount = document.querySelector("#selection-count");
 const selectionTotal = document.querySelector("#selection-total");
 const selectionTitle = document.querySelector("#selection-title");
+const selectionError = document.querySelector("#selection-error");
 
 const selectedCourseIds = new Set();
 
@@ -149,6 +150,22 @@ function renderSelection() {
 function updateSelection() {
   renderSelection();
   filterCourses();
+
+  if (selectedCourseIds.size > 0) {
+    selectionError.hidden = true;
+    selectionError.textContent = "";
+  }
+}
+
+function validateSelection() {
+  const isValid = selectedCourseIds.size > 0;
+
+  selectionError.hidden = isValid;
+  selectionError.textContent = isValid
+    ? ""
+    : "Ajoutez au moins un cours du catalogue à votre sélection.";
+
+  return isValid;
 }
 
 coursesContainer.addEventListener("click", function (event) {
@@ -220,6 +237,11 @@ updateSelection();
 const registrationForm = document.querySelector("#registration-form");
 const passwordInput = document.querySelector("#password");
 const confirmPasswordInput = document.querySelector("#confirm-password");
+const submitRegistrationButton = document.querySelector("#submit-registration");
+
+const confirmationSection = document.querySelector("#confirmation");
+const confirmationTitle = document.querySelector("#confirmation-title");
+const summaryCoursesList = document.querySelector("#summary-courses");
 
 const registrationFields = Array.from(
   registrationForm.querySelectorAll("input, select")
@@ -384,7 +406,92 @@ function resetFormValidation() {
   });
 }
 
+function renderConfirmation() {
+  const selectedCourses = courses.filter(function (course) {
+    return selectedCourseIds.has(course.id);
+  });
+
+  document.querySelector("#dossier-number").textContent =
+    `NOUR-${crypto.randomUUID().toUpperCase()}`;
+
+  document.querySelector("#summary-parent-name").textContent =
+    document.querySelector("#parent-name").value.trim();
+
+  document.querySelector("#summary-email").textContent =
+    document.querySelector("#parent-email").value.trim();
+
+  document.querySelector("#summary-phone").textContent =
+    document.querySelector("#parent-phone").value.replace(/\s+/g, "");
+
+  document.querySelector("#summary-student-name").textContent =
+    document.querySelector("#student-name").value.trim();
+
+  document.querySelector("#summary-student-level").textContent =
+    document.querySelector("#student-level").value;
+
+  summaryCoursesList.innerHTML = "";
+
+  let total = 0;
+
+  selectedCourses.forEach(function (course) {
+    total += course.price;
+
+    const item = document.createElement("li");
+    const title = document.createElement("strong");
+    const details = document.createElement("p");
+    const price = document.createElement("p");
+
+    title.textContent = `${course.title} — ${course.level}`;
+    details.textContent = `${course.center} · ${course.schedule}`;
+    price.textContent = `${course.price} MAD / mois`;
+    price.classList.add("summary-course-price");
+
+    item.appendChild(title);
+    item.appendChild(details);
+    item.appendChild(price);
+    summaryCoursesList.appendChild(item);
+  });
+
+  document.querySelector("#summary-total").textContent = `${total} MAD`;
+
+  confirmationSection.hidden = false;
+}
+
 registrationForm.addEventListener("input", handleFieldValidation);
 registrationForm.addEventListener("change", handleFieldValidation);
 registrationForm.addEventListener("focusout", handleFieldValidation);
 registrationForm.addEventListener("reset", resetFormValidation);
+
+registrationForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const hasCourses = validateSelection();
+  let firstInvalidField = null;
+
+  registrationFields.forEach(function (field) {
+    const isValid = validateField(field);
+
+    if (!isValid && firstInvalidField === null) {
+      firstInvalidField = field;
+    }
+  });
+
+  if (!hasCourses) {
+    selectionTitle.focus();
+    return;
+  }
+
+  if (firstInvalidField !== null) {
+    firstInvalidField.focus();
+    return;
+  }
+
+  renderConfirmation();
+  confirmationTitle.focus();
+
+  registrationForm.reset();
+  selectedCourseIds.clear();
+  updateSelection();
+});
+
+submitRegistrationButton.disabled = false;
